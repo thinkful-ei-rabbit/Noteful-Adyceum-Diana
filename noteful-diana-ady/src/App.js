@@ -1,35 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {Route} from 'react-router-dom';
+//import {Route} from 'react-router-dom';
+import NotesList from './NoteList';
+import Header from './Header';
+import Sidebar from './Sidebar';
+import STORE from './STORE';
 
-class App extends Component {
+class App extends React.Component {
   state = {
-      notes: [],
-      folders: []
+      notes: STORE.notes,
+      folders: STORE.folders
   };
 
-  //Boilerpolate Sample:
-//     return (
-//         <div className="app">
-//             // Exact route - will only match /
-//             <Route exact path="/" component={HomePage} />
-//             // Inexact route - will match /settings, /settings/profile
-//             // and /settings/email
-//             <Route path="/settings" component={SettingsNavigation} />
-//             <Route
-//                 exact
-//                 path="/settings/profile"
-//                 component={ProfileSettings}
-//             />
-//             // If you want to pass props to the component, use the render prop
-//             <Route
-//                 exact
-//                 path="/settings/email"
-//                 render={() => <EmailSettings email="jturner@thinkful.com" />}
-//             />
-//         </div>
-//     );
-// }
+  render() {
+    return(
+      <div className = 'wrapper'>
+    <Header/>
+    <Sidebar folders={this.state.folders}/>
+    <NotesList notes={this.state.notes}/>
+    </div>
+    )
+  }
+
+
+
+};
 
 export default App;
